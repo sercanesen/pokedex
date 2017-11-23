@@ -1,10 +1,12 @@
 /**
- * Purpose  :   React Native with Redux state manager
+ * Purpose  :   Simple React Native Applcation with Redux state manager
  * Author   :   Sercan Esen
- * https://github.com/facebook/react-native
+ * Github   :   https://github.com/facebook/react-native
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { createStore, combineReducers } from 'redux'
 import {
   Platform,
   StyleSheet,
