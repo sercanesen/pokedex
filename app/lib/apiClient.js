@@ -24,7 +24,7 @@ class ApiClient {
 		return this.xhr(url, params, 'DELETE');
 	}
 
-	static queryParams(params) {
+	static queryParamsEsc(params) {
     	return Object.keys(params)
 	        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
 	        .join('&');
@@ -34,9 +34,8 @@ class ApiClient {
 		let options = {}
 		options.method = method
 		options.headers = ApiClient.headers()
-		console.log(this.queryParams(params))
 		if(params) {
-			url += (url.indexOf('?') === -1 ? '?' : '&') + this.queryParams(params);
+			url += (url.indexOf('?') === -1 ? '?' : '&') + this.queryParamsEsc(params);
 		}
 		console.log(url)
 		return fetch(url, options).then( resp => { 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
+import * as config from '../constants/config'
 import { 
 	Text, 
 	View, 
@@ -14,19 +15,20 @@ class HomeContainer extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {
-			offset	: 0,
-			limit	: 10,
-		}
 	}
 
 	getPokemons() {
-		console.log(this.state)
-		this.props.getPokemons(this.state.offset, this.state.limit)
-		this.setState({
-			offset	: this.state.offset + 10,
-			limit	: this.state.limit  + 10
-		})
+		// assign next url to be fetched from previous call into store
+		const nextUrl = this.props.pokemons.next
+		// get initial call parameters from config
+		// there is a url builder with escape uri code in apiClient
+		// in case we need to set different calls based on the state change
+		const params = 	{
+			offset 	: config.offset,
+			limit	: config.limit
+		}
+		this.props.getPokemons(nextUrl, params)
+		console.log(this.props.pokemons)
 	}
 
 	render() {
