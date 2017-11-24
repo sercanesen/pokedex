@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import pokemons from './pokemons';
+import * as pokemons from './pokemons';
 
 export default combineReducers(Object.assign(
 	pokemons,
