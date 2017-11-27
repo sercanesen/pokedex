@@ -2,6 +2,7 @@ import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import * as config from '../constants/config'
+import PokemonList from '../components/pokemonList'
 import { 
 	Text, 
 	View, 
@@ -19,7 +20,7 @@ class HomeContainer extends Component {
 
 	getPokemons() {
 		// assign next url to be fetched from previous call into store
-		const nextUrl = this.props.pokemons.next
+		const nextUrl = this.props.pokemons.nextUrl
 		// get initial call parameters from config
 		// there is a url builder with escape uri code in apiClient
 		// in case we need to set different calls based on the state change
@@ -32,11 +33,15 @@ class HomeContainer extends Component {
 	}
 
 	render() {
+		const pokemons = this.props.pokemons.pokemonResults ? this.props.pokemons.pokemonResults : []
 		return <View>
 			<View>
-				<TouchableHighlight onPress={()=> this.getPokemons()}>
-					<Text> Get Pokemons !! </Text>
-				</TouchableHighlight>
+				<ScrollView>
+					<PokemonList pokemons = { pokemons }/>
+					<TouchableHighlight onPress={()=> this.getPokemons()}>
+						<Text> Get Pokemons !! </Text>
+					</TouchableHighlight>
+				</ScrollView>	
 			</View>
 		</View>
 	}

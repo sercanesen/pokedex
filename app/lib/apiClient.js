@@ -31,6 +31,7 @@ class ApiClient {
 	}
 
 	static xhr(url, params, method) {
+		console.log(url)
 		let options = {}
 		options.method = method
 		options.headers = ApiClient.headers()
