@@ -1,55 +1,59 @@
 import React from 'react'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import * as config from '../constants/config'
+import { View, ScrollView } from 'react-native';
+import AppHeader from '../components/appHeader'
 import PokemonList from '../components/pokemonList'
-import { 
-	Text, 
-	View, 
-	TouchableHighlight,
-	Image,
-	ScrollView,
-	StyleSheet 
-} from 'react-native';
+import GetPokemonsButton from '../components/getPokemonsButton'
+import * as config from '../constants/config'
 
 class HomeContainer extends Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			params  : {
+				offset 	: config.offset,
+				limit	: config.limit
+			}
+		}
+	}
+
+	componentWillMount() {
+		// before module mount get the initial api call
+		// with parameters from system config
+		this.props.getPokemons(this.state.nextUrl, this.state.params)
+	}
+
+	getPokemonDetails(url) {
+		this.props.getPokemonDetails(url)
 	}
 
 	getPokemons() {
 		// assign next url to be fetched from previous call into store
-		const nextUrl = this.props.pokemons.nextUrl
-		// get initial call parameters from config
-		// there is a url builder with escape uri code in apiClient
-		// in case we need to set different calls based on the state change
-		const params = 	{
-			offset 	: config.offset,
-			limit	: config.limit
-		}
-		this.props.getPokemons(nextUrl, params)
+		this.props.getPokemons(this.props.pokemons.nextUrl, this.state.params)
 		console.log(this.props.pokemons)
 	}
 
 	render() {
+		// yellow box remote debugger warning ignore in the client
+		console.ignoredYellowBox = ['Remote debugger'];
 		const pokemons = this.props.pokemons.pokemonResults ? this.props.pokemons.pokemonResults : []
-		return <View>
-			<View>
-				<ScrollView>
-					<PokemonList pokemons = { pokemons }/>
-					<TouchableHighlight onPress={()=> this.getPokemons()}>
-						<Text> Get Pokemons !! </Text>
-					</TouchableHighlight>
-				</ScrollView>	
-			</View>
+		// to prevent scroll height issue {flex:1} attribute should be passed all the way down from parent
+		return <View style={{flex:1}}>
+			<AppHeader/>
+			<ScrollView style={{flex:1}}>
+				<PokemonList pokemons = { pokemons } getPokemonDetails={this.getPokemonDetails.bind(this)}/>
+				<GetPokemonsButton getPokemons = { this.getPokemons.bind(this) }/>
+			</ScrollView>
 		</View>
 	}
 }
 
 function mapStateToProps(state) {
 	return {
-		pokemons: state.pokemons
+		pokemons: state.pokemons,
+		pokemonDetails: state.pokemonDetails
 	}
 }
 
