@@ -31,14 +31,12 @@ class ApiClient {
 	}
 
 	static xhr(url, params, method) {
-		console.log(url)
 		let options = {}
 		options.method = method
 		options.headers = ApiClient.headers()
 		if(params) {
 			url += (url.indexOf('?') === -1 ? '?' : '&') + this.queryParamsEsc(params);
 		}
-		console.log(url)
 		return fetch(url, options).then( resp => { 
 			let json = resp.json()
 			if(resp.ok) {
