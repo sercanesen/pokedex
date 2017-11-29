@@ -15,8 +15,8 @@ class PokemonDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // there might be a templating in the reducer or actions
-    // this seemed more traceble at 3 AM in the morning :)
+    // there might be a template in the reducer or actions
+    // this seemed more traceable at 3 AM in the morning :)
     if (this.props.pokemonDetails != nextProps.pokemonDetails) {
       const pokemonDetails = nextProps.pokemonDetails
       this.setState({
@@ -35,7 +35,7 @@ class PokemonDetails extends Component {
     const image = this.state.images
     return (
       <Modal
-        animationType="fade"
+        animationType="slide"
         transparent={ false }
         presentationStyle="fullScreen"
         visible={ this.props.visibility }

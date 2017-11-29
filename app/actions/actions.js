@@ -2,15 +2,15 @@ import * as actionTypes from "./types";
 import * as config from "../constants/config";
 import apiClient from "../lib/apiClient";
 
-// TODO split these file into different actions
+// TODO split this file into different actions
 export function getPokemons(nextUrl, paramaters) {
   const url = nextUrl ? nextUrl : config.get_pokemons_endpoint
   const params = nextUrl ? {} : paramaters
   return (dispatch, getState) => {
-    // if response dont have nextUrl built the url with config params
+    // if response don not have nextUrl built the url with config params
     // passed from homeContainer to actions
     return apiClient.get(url, params).then(resp => {
-      // concatinating new result batch to existing resources to reduce payload
+      // concat new result batch to existing resources to reduce payload
       let pokemonResults = getState().pokemons.pokemonResults ? getState().pokemons.pokemonResults : []
       dispatch(setPokemons({
         pokemons: {

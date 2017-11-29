@@ -5,7 +5,17 @@ class AppHeader extends Component {
   render() {
     return (
 			<Header
-				centerComponent={{ text: 'POKEDEX', style: {fontFamily: 'PressStart2P-Regular', color: '#fff', fontSize: 22} }}/>
+        backgroundColor="#263238"
+				centerComponent={
+				  { text: 'POKEDEX',
+				    style: {
+				      fontFamily: 'PressStart2P-Regular',
+				      color: '#fff',
+				      fontSize: 22
+				    }
+				  }
+				}
+      />
     )
   }
 }
