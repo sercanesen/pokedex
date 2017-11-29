@@ -9,8 +9,6 @@ class ApiClient {
   }
 
   static get(url, params) {
-    console.log("api client get :")
-    console.log(url)
     return this.xhr(url, params, 'GET');
   }
 
@@ -40,8 +38,6 @@ class ApiClient {
       url += (url.indexOf('?') === -1 ? '?' : '&') + this.queryParamsEsc(params);
     }
     return fetch(url, options).then(resp => {
-      console.log("in fetch")
-      console.log(url)
       let json = resp.json()
       if (resp.ok) {
         return json

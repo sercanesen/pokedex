@@ -29,7 +29,6 @@ class PokemonDetails extends Component {
   }
 
   render() {
-    const pokemonDetails = this.props.pokemonDetails
     const name = this.state.name
     const weight = this.state.weight
     const abilities = this.state.abilities
