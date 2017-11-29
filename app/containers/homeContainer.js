@@ -45,6 +45,10 @@ class HomeContainer extends Component {
 		this.setState({isPokemonDetailVisible : visibility})
 	}
 
+	getAppHeader() {
+		return <AppHeader/>
+	}
+
 	getPokemonListComponent() {
 		const pokemons = this.props.pokemons.pokemonResults || []
 		return <PokemonList 	pokemons = { pokemons } 
@@ -65,12 +69,13 @@ class HomeContainer extends Component {
 
 	render() {
 		console.ignoredYellowBox = ['Remote debugger'];
+		const appHeader = this.getAppHeader()
 		const pokemonListComponent = this.getPokemonListComponent()
 		const pokemonDetailComponent = this.getPokemonDetailComponent()
 		const getMorePokemonButtonComponent = this.getMorePokemonButtonComponent()
 
 		return <View style={{flex:1}}>
-			<AppHeader/>
+			{appHeader}
 			<ScrollView style={{flex:1}}>
 				{pokemonListComponent}
 				{pokemonDetailComponent}

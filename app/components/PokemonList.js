@@ -14,7 +14,7 @@ class PokemonList extends Component {
               onPress={() => this.props.getPokemonDetails(pokemon.url) }
               roundAvatar
               key={i}
-              fontFamily = 'PressStart2P-Regular'
+              fontFamily = 'Aldrich-Regular'
               title={pokemon.name}
             />))
         }

@@ -30,15 +30,12 @@ class PokemonDetails extends Component {
         }
     }
 
-    im
-
     render() {
         const pokemonDetails = this.props.pokemonDetails 
         const name = this.state.name
         const weight = this.state.weight
         const abilities = this.state.abilities
         const image = this.state.images
-        console.log(image.front_default)
         return (
         <Modal
             animationType = "fade"
@@ -48,10 +45,8 @@ class PokemonDetails extends Component {
             onRequestClose = {() => this.props.setDetailModelVisibility(false)}>
             <View style = {{marginTop: 50}}>
                 <Avatar
-                    large
+                    xlarge
                     source={{uri: image.front_default}}
-                    onPress={() => console.log("Works!")}
-                    activeOpacity={0.7}
                 />        
                 <Text>Name : {name}</Text>
                 <Text>Weight : {weight}</Text>
