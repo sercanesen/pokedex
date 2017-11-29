@@ -2,7 +2,7 @@ import React from 'react'
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Text, View, TouchableHighlight } from 'react-native'
-import { List, ListItem, Tile } from 'react-native-elements'
+import { List, ListItem, Avatar} from 'react-native-elements'
 
 class PokemonDetails extends Component {
 
@@ -30,8 +30,11 @@ class PokemonDetails extends Component {
         }
     }
 
+    im
+
     render() {
         const pokemonDetails = this.props.pokemonDetails 
+        const name = this.state.name
         const weight = this.state.weight
         const abilities = this.state.abilities
         const image = this.state.images
@@ -44,26 +47,25 @@ class PokemonDetails extends Component {
             visible = { this.props.visibility }
             onRequestClose = {() => this.props.setDetailModelVisibility(false)}>
             <View style = {{marginTop: 50}}>
-                <Tile
-                    imageSrc = {{img: (this.state.images.front_default)}}
-                    title = {pokemonDetails.name}
-                    contentContainerStyle={{height: 200}}
-                >
-                    <View style = {{flex: 2, flexDirection: 'column', justifyContent: 'space-between'}}>
-                        <Text>Weight : {weight}</Text>
-                        <Text>Abilities : </Text>
-                        <List >
-                            { 
-                                abilities.map((a, i) => (
-                                    <ListItem
-                                      key={i}
-                                      title={a.ability.name}
-                                    />)
-                                )
-                            }
-                        </List>
-                    </View>
-                </Tile>
+                <Avatar
+                    large
+                    source={{uri: image.front_default}}
+                    onPress={() => console.log("Works!")}
+                    activeOpacity={0.7}
+                />        
+                <Text>Name : {name}</Text>
+                <Text>Weight : {weight}</Text>
+                <Text>Abilities : </Text>
+                <List>
+                    { 
+                        abilities.map((a, i) => (
+                            <ListItem
+                              key={i}
+                              title={a.ability.name}
+                            />)
+                        )
+                    }
+                </List>
             </View>
         </Modal>
     );

@@ -2,6 +2,7 @@ import * as actionTypes from './types'
 import * as config from '../constants/config';
 import apiClient from '../lib/apiClient'
 
+// TODO split these file into different actions
 export function getPokemons(nextUrl, paramaters) {
 	const url 		= nextUrl ? nextUrl : config.get_pokemons_endpoint
 	const params 	= nextUrl ? {}		: paramaters
