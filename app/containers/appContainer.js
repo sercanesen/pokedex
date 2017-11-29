@@ -7,7 +7,6 @@ import HomeContainer from './homeContainer';
 
 
 class AppContainer extends Component {
-
 	render() {
 		return 	<HomeContainer {...this.props}/>
 	}

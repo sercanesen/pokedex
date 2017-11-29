@@ -22,14 +22,18 @@ class HomeContainer extends Component {
 	}
 
 	componentWillMount() {
-		// before module mount get the initial api call
-		// with parameters from system config
+		// get the initial api call with parameters from system config
 		this.props.getPokemons(this.state.nextUrl, this.state.params)
+	}
+	componentWillReceiveProps(nextProps) {
+		// re-render pokemonDetail modal only when props changed
+		if(this.props.pokemonDetails != nextProps.pokemonDetails) {
+			this.setDetailModalVisibility(true)
+		}
 	}
 
 	getPokemonDetails(url) {
 		this.props.getPokemonDetails(url)
-		this.setState({ isPokemonDetailVisible : true })
 	}
 
 	getPokemons() {
@@ -37,25 +41,40 @@ class HomeContainer extends Component {
 		this.props.getPokemons(this.props.pokemons.nextUrl, this.state.params)
 	}
 
-	setDetailModelVisibility(visibility) {
+	setDetailModalVisibility(visibility) {
 		this.setState({isPokemonDetailVisible : visibility})
 	}
 
+	getPokemonListComponent() {
+		const pokemons = this.props.pokemons.pokemonResults || []
+		return <PokemonList 	pokemons = { pokemons } 
+								getPokemonDetails = {this.getPokemonDetails.bind(this)} />
+	}
+
+	getPokemonDetailComponent() {
+		const pokemonDetails = this.props.pokemonDetails
+		return <PokemonDetails 	pokemonDetails = { pokemonDetails } 
+								visibility = {this.state.isPokemonDetailVisible}
+								setDetailModelVisibility = {this.setDetailModalVisibility.bind(this)} />
+	}
+
+	getMorePokemonButtonComponent() {
+		return <GetPokemonsButton 	getPokemons = { this.getPokemons.bind(this) } />
+	}
+
+
 	render() {
-		// yellow box remote debugger warning ignore in the client
 		console.ignoredYellowBox = ['Remote debugger'];
-		const pokemons = this.props.pokemons.pokemonResults ? this.props.pokemons.pokemonResults : []
-		const pokemonDetails = this.props.pokemonDetails ? this.props.pokemonDetails : {}
-		// to prevent scroll height issue {flex:1} attribute should be passed all the way down from parent
+		const pokemonListComponent = this.getPokemonListComponent()
+		const pokemonDetailComponent = this.getPokemonDetailComponent()
+		const getMorePokemonButtonComponent = this.getMorePokemonButtonComponent()
+
 		return <View style={{flex:1}}>
 			<AppHeader/>
 			<ScrollView style={{flex:1}}>
-				<PokemonList 		pokemons = { pokemons } 
-									getPokemonDetails = {this.getPokemonDetails.bind(this)} />
-				<PokemonDetails 	pokemonDetails = { pokemonDetails } 
-									visibility = {this.state.isPokemonDetailVisible}
-									setDetailModelVisibility = {this.setDetailModelVisibility.bind(this)} />
-				<GetPokemonsButton 	getPokemons = { this.getPokemons.bind(this) } />
+				{pokemonListComponent}
+				{pokemonDetailComponent}
+				{getMorePokemonButtonComponent}
 			</ScrollView>
 		</View>
 	}

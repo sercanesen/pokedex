@@ -33,10 +33,13 @@ export function setPokemons({ pokemons }) {
 }
 
 export function getPokemonDetails(url) {
+	console.log("inside get Pokemon detail : ")
+	console.log(url)
 	return (dispatch, getState) => {
 		return apiClient.get(url).then(resp => {
+			let pokemonDetails = getState().pokemonDetails ? resp : {}
 			dispatch(setPokemonDetails({
-				pokemonDetails: resp
+				pokemonDetails: pokemonDetails
 			}))
 		}).catch((ex) => {
 			console.log(ex)
@@ -45,6 +48,8 @@ export function getPokemonDetails(url) {
 }
 
 export function setPokemonDetails({ pokemonDetails }) {
+	console.log("pokemonDetails")
+	console.log(pokemonDetails)
 	return {
 		type: actionTypes.SET_POKEMON_DETAILS,
 		pokemonDetails

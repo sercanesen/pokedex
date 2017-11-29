@@ -1,21 +1,26 @@
 import React from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { List, ListItem } from 'react-native-elements'
 
-const PokemonList = ({ pokemons, getPokemonDetails }) => (
-  <List>
-    {
-      pokemons.map((pokemon, i) => (
-        <ListItem
-          button
-          onPress={() => getPokemonDetails(pokemon.url) }
-          roundAvatar
-          key={i}
-          title={pokemon.name}
-        />
-      ))
-    }
-  </List>
-)
+class PokemonList extends Component {
+
+  render() {
+    return (
+      <List>
+        { this.props.pokemons.map((pokemon, i) => (
+            <ListItem
+              button
+              onPress={() => this.props.getPokemonDetails(pokemon.url) }
+              roundAvatar
+              key={i}
+              fontFamily = 'PressStart2P-Regular'
+              title={pokemon.name}
+            />))
+        }
+      </List>
+    );
+  }
+}
 
 export default PokemonList
