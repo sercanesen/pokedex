@@ -34,11 +34,6 @@ export function setPokemons({pokemons}) {
 }
 
 export function getPokemonDetails(url) {
-<<<<<<< HEAD
-  console.log("inside get Pokemon detail : ")
-  console.log(url)
-=======
->>>>>>> initial commit
   return (dispatch, getState) => {
     return apiClient.get(url).then(resp => {
       let pokemonDetails = getState().pokemonDetails ? resp : {}
@@ -52,11 +47,6 @@ export function getPokemonDetails(url) {
 }
 
 export function setPokemonDetails({pokemonDetails}) {
-<<<<<<< HEAD
-  console.log("pokemonDetails")
-  console.log(pokemonDetails)
-=======
->>>>>>> initial commit
   return {
     type: actionTypes.SET_POKEMON_DETAILS,
     pokemonDetails
