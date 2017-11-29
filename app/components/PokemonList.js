@@ -1,7 +1,5 @@
-import React from 'react'
-import { Component } from 'react'
-import PropTypes from 'prop-types'
-import { List, ListItem } from 'react-native-elements'
+import React, {Component} from "react";
+import {List, ListItem} from "react-native-elements";
 
 class PokemonList extends Component {
 
@@ -9,14 +7,14 @@ class PokemonList extends Component {
     return (
       <List>
         { this.props.pokemons.map((pokemon, i) => (
-            <ListItem
-              button
-              onPress={() => this.props.getPokemonDetails(pokemon.url) }
-              roundAvatar
-              key={i}
-              fontFamily = 'Aldrich-Regular'
-              title={pokemon.name}
-            />))
+          <ListItem
+            button
+            onPress={() => this.props.getPokemonDetails(pokemon.url) }
+            roundAvatar
+            key={i}
+            fontFamily='Aldrich-Regular'
+            title={pokemon.name}
+          />))
         }
       </List>
     );
