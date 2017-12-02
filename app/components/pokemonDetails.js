@@ -46,36 +46,43 @@ class PokemonDetails extends Component {
             <Container>
               <Content>
                 <Grid>
-                  <Row style={{ backgroundColor: '#263238'}} size={55}>
-                    <Thumbnail large source={{uri: image.front_default}} />
-                    <Text>{name}</Text>
+                  <Row style={{ backgroundColor: '#263238'}}>
+                    <Image source={{uri: image.front_default}} style={{height: 200, width: 200, flex: 1}}/>
+                    <Text textAlign = 'center' style= {{
+                      fontFamily: 'PressStart2P-Regular',
+                      color: '#fff',
+                      fontSize: 20,
+                      marginTop: 80,
+                      flex: 1}}>
+                      {name}
+                    </Text>
                   </Row>
-                  <Row style={{ backgroundColor: '#FFF'}} size={50}>
-                    <List>
-                      <ListItem itemHeader first>
-                        <Text>NAME</Text>
-                      </ListItem>
-                      <ListItem >
-                        <Text>{name}</Text>
-                      </ListItem>
-                      <ListItem itemHeader>
-                        <Text>WEIGHT</Text>
-                      </ListItem>
-                      <ListItem>
-                        <Text>{weight}</Text>
-                      </ListItem>
-                      <ListItem itemHeader>
-                        <Text>ABILITIES</Text>
-                      </ListItem>
-                      {
-                        abilities.map((a, i) => (
-                          <ListItem key={i}>
-                            <Text>
-                              {a.ability.name}
-                            </Text>
-                          </ListItem>))
-                      }
-                    </List>
+                  <Row style={{ backgroundColor: '#FFF'}}>
+                    <Col>
+                      <List>
+                        <ListItem itemHeader>
+                          <Text>WEIGHT</Text>
+                        </ListItem>
+                        <ListItem>
+                          <Text>{weight}</Text>
+                        </ListItem>
+                      </List>
+                    </Col>
+                    <Col>
+                      <List>
+                        <ListItem itemHeader>
+                          <Text>ABILITIES</Text>
+                        </ListItem>
+                        {
+                          abilities.map((a, i) => (
+                            <ListItem key={i}>
+                              <Text>
+                                {a.ability.name}
+                              </Text>
+                            </ListItem>))
+                        }
+                      </List>
+                    </Col>
                   </Row>
                 </Grid>
               </Content>
