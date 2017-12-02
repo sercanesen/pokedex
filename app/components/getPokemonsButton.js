@@ -11,7 +11,7 @@ class GetPokemonsButton extends Component {
         warning
         onPress={ this.props.getPokemons }
       >
-        <Text style={{fontFamily: 'PressStart2P-Regular' }}>
+        <Text style={{fontFamily: 'PressStart2P-Regular', color: '#263238' }}>
           Get Pokemons
         </Text>
       </Button>

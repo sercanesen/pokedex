@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { View, Image, TouchableHighlight} from "react-native";
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, List, ListItem } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, List, ListItem, Fab } from 'native-base';
 import  Modal  from 'react-native-modal'
 
 class PokemonDetails extends Component {
@@ -87,6 +87,15 @@ class PokemonDetails extends Component {
                   </Row>
                 </Grid>
               </Content>
+              <Fab
+                    active={false}
+                    direction="up"
+                    containerStyle={{ }}
+                    style={{ backgroundColor: '#EEAC57' }}
+                    position="bottomRight"
+                    onPress={() => this.props.setDetailModelVisibility(false)}>
+                    <Icon name="close" style={{ color: '#263238'  }}/>
+                  </Fab>
             </Container>
       </Modal>
     );
