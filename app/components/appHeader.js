@@ -8,14 +8,14 @@ class AppHeader extends Component {
         backgroundColor="#263238"
         height= {100}
         centerComponent={
-				  { text: 'POKEDEX',
-				    style: {
-				      fontFamily: 'PressStart2P-Regular',
-				      color: '#fff',
-				      fontSize: 22
-				    }
-				  }
-				}
+          { text: 'POKEDEX',
+              style: {
+                fontFamily: 'PressStart2P-Regular',
+                color: '#fff',
+                fontSize: 22
+              }
+            }
+          }
       />
     )
   }
