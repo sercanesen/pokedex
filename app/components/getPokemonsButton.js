@@ -1,17 +1,19 @@
 import React, {Component} from "react";
-import {Button} from "react-native-elements";
+import { Button, Text } from 'native-base';
 
 
 class GetPokemonsButton extends Component {
 
   render() {
     return (
-			<Button
-				raised
-				onPress={ this.props.getPokemons }
-				icon={{name: 'autorenew'}}
-				title='Get Pokemons'
-			/>
+      <Button 
+        block
+        color='#FFD54F' 
+        dark
+        onPress={ this.props.getPokemons }
+      >
+          <Text>Get Pokemons</Text>
+      </Button>
     );
   }
 }

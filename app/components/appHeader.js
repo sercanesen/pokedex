@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import {Header} from "react-native-elements";
+import { Header } from "react-native-elements";
 
 class AppHeader extends Component {
-  render() {
-    return (
-			<Header
+        render() {
+        return (
+      <Header
         backgroundColor="#263238"
-				centerComponent={
+        centerComponent={
 				  { text: 'POKEDEX',
 				    style: {
 				      fontFamily: 'PressStart2P-Regular',
