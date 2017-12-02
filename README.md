@@ -2,6 +2,10 @@
 
 An example of React Native application with Redux state manager
 
+## Screenshots
+
+![ScreenShot](/screenshot/pokedex.jpg)
+
 ## PokeApi
 
 Thanks to public API's of pokeApi you can get all the pokemon data you want
