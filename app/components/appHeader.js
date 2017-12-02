@@ -6,6 +6,7 @@ class AppHeader extends Component {
         return (
       <Header
         backgroundColor="#263238"
+        height= {100}
         centerComponent={
 				  { text: 'POKEDEX',
 				    style: {

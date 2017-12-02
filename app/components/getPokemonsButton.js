@@ -8,12 +8,12 @@ class GetPokemonsButton extends Component {
     return (
       <Button 
         block
-        color='#FFD54F'
-        fontFamily= 'PressStart2P-Regular' 
-        dark
+        warning
         onPress={ this.props.getPokemons }
       >
-          <Text>Get Pokemons</Text>
+        <Text style={{fontFamily: 'PressStart2P-Regular' }}>
+          Get Pokemons
+        </Text>
       </Button>
     );
   }

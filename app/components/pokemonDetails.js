@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Modal, View, Image, TouchableHighlight} from "react-native";
+import { View, Image, TouchableHighlight} from "react-native";
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, List, ListItem } from 'native-base';
+import  Modal  from 'react-native-modal'
 
 class PokemonDetails extends Component {
 
