@@ -14,8 +14,8 @@ import AppContainer from "./app/containers/appContainer"
 let store = createStore(reducer, applyMiddleware(thunk))
 
 export default class App extends Component {
-	render() {
-		return (<Provider store={store}>
-			<AppContainer/>
-		</Provider>)}
+  render() {
+    return (<Provider store={store}>
+      <AppContainer/>
+    </Provider>)}
 };

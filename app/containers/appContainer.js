@@ -6,15 +6,15 @@ import HomeContainer from "./homeContainer"
 
 
 class AppContainer extends Component {
-	render() {
-		return <HomeContainer {...this.props}/>
-	}
+  render() {
+    return <HomeContainer {...this.props}/>
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators(ActionCreators, dispatch)
+  return bindActionCreators(ActionCreators, dispatch)
 }
 
 export default connect((state) => {
-	return {}
+  return {}
 }, mapDispatchToProps)(AppContainer)
