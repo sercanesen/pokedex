@@ -1,5 +1,3 @@
-import * as Actions from "./actions.js";
+import * as Actions from "./actions.js"
 
-export const ActionCreators = Object.assign({},
-  Actions,
-)
+export const ActionCreators = Object.assign({}, Actions)

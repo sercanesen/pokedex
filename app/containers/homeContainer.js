@@ -1,12 +1,12 @@
-import React from 'react'
-import { Component } from 'react'
-import { connect } from 'react-redux'
-import { View, ScrollView } from 'react-native';
-import AppHeader from '../components/appHeader'
-import PokemonList from '../components/pokemonList'
-import PokemonDetails from '../components/pokemonDetails'
-import GetPokemonsButton from '../components/getPokemonsButton'
-import * as config from '../constants/config'
+import React from "react"
+import { Component } from "react"
+import { connect } from "react-redux"
+import { View, ScrollView } from "react-native"
+import AppHeader from "../components/appHeader"
+import PokemonList from "../components/pokemonList"
+import PokemonDetails from "../components/pokemonDetails"
+import GetPokemonsButton from "../components/getPokemonsButton"
+import * as config from "../constants/config"
 
 class HomeContainer extends Component {
 
@@ -52,14 +52,14 @@ class HomeContainer extends Component {
 	getPokemonListComponent() {
 		const pokemons = this.props.pokemons.pokemonResults || []
 		return <PokemonList 	pokemons = { pokemons } 
-								getPokemonDetails = {this.getPokemonDetails.bind(this)} />
+			getPokemonDetails = {this.getPokemonDetails.bind(this)} />
 	}
 
 	getPokemonDetailComponent() {
 		const pokemonDetails = this.props.pokemonDetails
 		return <PokemonDetails 	pokemonDetails = { pokemonDetails } 
-								visibility = {this.state.isPokemonDetailVisible}
-								setDetailModelVisibility = {this.setDetailModalVisibility.bind(this)} />
+			visibility = {this.state.isPokemonDetailVisible}
+			setDetailModelVisibility = {this.setDetailModalVisibility.bind(this)} />
 	}
 
 	getMorePokemonButtonComponent() {
@@ -68,7 +68,6 @@ class HomeContainer extends Component {
 
 
 	render() {
-		console.ignoredYellowBox = ['Remote debugger'];
 		const appHeader = this.getAppHeader()
 		const pokemonListComponent = this.getPokemonListComponent()
 		const pokemonDetailComponent = this.getPokemonDetailComponent()
@@ -92,4 +91,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(HomeContainer);
+export default connect(mapStateToProps)(HomeContainer)
